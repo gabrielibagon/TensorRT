@@ -167,7 +167,7 @@ static const std::vector<std::string> CLASS_NAMES = {
     "toothbrush",
 };
 
-static const std::string MODEL_NAME = "mrcnn_nchw.uff";
+static const std::string MODEL_NAME = "mrcnn_nchw-resnet18.uff";
 static const std::string MODEL_INPUT = "input_image";
 static const Dims3 MODEL_INPUT_SHAPE = IMAGE_SHAPE;
 static const std::vector<std::string> MODEL_OUTPUTS = {"mrcnn_detection", "mrcnn_mask/Sigmoid"};

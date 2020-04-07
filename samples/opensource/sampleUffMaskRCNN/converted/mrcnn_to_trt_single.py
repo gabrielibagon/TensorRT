@@ -95,6 +95,7 @@ class InferenceConfig(CocoConfig):
     # one image at a time. Batch size = GPU_COUNT * IMAGES_PER_GPU
     GPU_COUNT = 1
     IMAGES_PER_GPU = 1
+    BACKBONE = 'resnet18' # OR 'resnet50' OR 'resnet101'
 
 def main(args=None):
 

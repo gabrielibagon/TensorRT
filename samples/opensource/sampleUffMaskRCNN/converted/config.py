@@ -67,27 +67,79 @@ timedistributed_remove_list = [
         "mrcnn_mask/Reshape/shape", "mrcnn_mask/Reshape", "mrcnn_mask/Reshape_1/shape", "mrcnn_mask/Reshape_1",
         ]
 
+# RESNET101 Version
+# timedistributed_connect_pairs = [
+#         ("mrcnn_mask_deconv/Relu", "mrcnn_mask/convolution"), # mrcnn_mask_deconv -> mrcnn_mask
+#         ("activation_74/Relu", "mrcnn_mask_deconv/conv2d_transpose"), #active74 -> mrcnn_mask_deconv
+#         ("mrcnn_mask_bn4/batchnorm/add_1","activation_74/Relu"),  # mrcnn_mask_bn4 -> active74
+#         ("mrcnn_mask_conv4/BiasAdd", "mrcnn_mask_bn4/batchnorm/mul_1"), #mrcnn_mask_conv4 -> mrcnn_mask_bn4
+#         ("activation_73/Relu", "mrcnn_mask_conv4/convolution"), #active73 -> mrcnn_mask_conv4
+#         ("mrcnn_mask_bn3/batchnorm/add_1","activation_73/Relu"), #mrcnn_mask_bn3 -> active73
+#         ("mrcnn_mask_conv3/BiasAdd", "mrcnn_mask_bn3/batchnorm/mul_1"), #mrcnn_mask_conv3 -> mrcnn_mask_bn3
+#         ("activation_72/Relu", "mrcnn_mask_conv3/convolution"), #active72 -> mrcnn_mask_conv3
+#         ("mrcnn_mask_bn2/batchnorm/add_1","activation_72/Relu"), #mrcnn_mask_bn2 -> active72
+#         ("mrcnn_mask_conv2/BiasAdd", "mrcnn_mask_bn2/batchnorm/mul_1"), #mrcnn_mask_conv2 -> mrcnn_mask_bn2
+#         ("activation_71/Relu", "mrcnn_mask_conv2/convolution"), #active71 -> mrcnn_mask_conv2
+#         ("mrcnn_mask_bn1/batchnorm/add_1","activation_71/Relu"), #mrcnn_mask_bn1 -> active71
+#         ("mrcnn_mask_conv1/BiasAdd", "mrcnn_mask_bn1/batchnorm/mul_1"), #mrcnn_mask_conv1 -> mrcnn_mask_bn1
+#         ("roi_align_mask_trt", "mrcnn_mask_conv1/convolution"), #roi_align_mask -> mrcnn_mask_conv1
+#
+#
+#         ("mrcnn_class_bn2/batchnorm/add_1","activation_69/Relu"), # mrcnn_class_bn2 -> active 69
+#         ("mrcnn_class_conv2/BiasAdd", "mrcnn_class_bn2/batchnorm/mul_1"), # mrcnn_class_conv2 -> mrcnn_class_bn2
+#         ("activation_68/Relu", "mrcnn_class_conv2/convolution"), # active 68 -> mrcnn_class_conv2
+#         ("mrcnn_class_bn1/batchnorm/add_1","activation_68/Relu"), # mrcnn_class_bn1 -> active 68
+#         ("mrcnn_class_conv1/BiasAdd", "mrcnn_class_bn1/batchnorm/mul_1"), # mrcnn_class_conv1 -> mrcnn_class_bn1
+#         ("roi_align_classifier", "mrcnn_class_conv1/convolution"), # roi_align_classifier -> mrcnn_class_conv1
+#         ]
+
+# RESNET50 version
+# timedistributed_connect_pairs = [
+#         ("mrcnn_mask_deconv/Relu", "mrcnn_mask/convolution"), # mrcnn_mask_deconv -> mrcnn_mask
+#         ("activation_40/Relu", "mrcnn_mask_deconv/conv2d_transpose"), #active74 -> mrcnn_mask_deconv
+#         ("mrcnn_mask_bn4/batchnorm/add_1","activation_40/Relu"),  # mrcnn_mask_bn4 -> active74
+#         ("mrcnn_mask_conv4/BiasAdd", "mrcnn_mask_bn4/batchnorm/mul_1"), #mrcnn_mask_conv4 -> mrcnn_mask_bn4
+#         ("activation_39/Relu", "mrcnn_mask_conv4/convolution"), #active73 -> mrcnn_mask_conv4
+#         ("mrcnn_mask_bn3/batchnorm/add_1","activation_39/Relu"), #mrcnn_mask_bn3 -> active73
+#         ("mrcnn_mask_conv3/BiasAdd", "mrcnn_mask_bn3/batchnorm/mul_1"), #mrcnn_mask_conv3 -> mrcnn_mask_bn3
+#         ("activation_38/Relu", "mrcnn_mask_conv3/convolution"), #active72 -> mrcnn_mask_conv3
+#         ("mrcnn_mask_bn2/batchnorm/add_1","activation_38/Relu"), #mrcnn_mask_bn2 -> active72
+#         ("mrcnn_mask_conv2/BiasAdd", "mrcnn_mask_bn2/batchnorm/mul_1"), #mrcnn_mask_conv2 -> mrcnn_mask_bn2
+#         ("activation_37/Relu", "mrcnn_mask_conv2/convolution"), #active71 -> mrcnn_mask_conv2
+#         ("mrcnn_mask_bn1/batchnorm/add_1","activation_37/Relu"), #mrcnn_mask_bn1 -> active71
+#         ("mrcnn_mask_conv1/BiasAdd", "mrcnn_mask_bn1/batchnorm/mul_1"), #mrcnn_mask_conv1 -> mrcnn_mask_bn1
+#         ("roi_align_mask_trt", "mrcnn_mask_conv1/convolution"), #roi_align_mask -> mrcnn_mask_conv1
+#
+#
+#         ("mrcnn_class_bn2/batchnorm/add_1","activation_35/Relu"), # mrcnn_class_bn2 -> active 69
+#         ("mrcnn_class_conv2/BiasAdd", "mrcnn_class_bn2/batchnorm/mul_1"), # mrcnn_class_conv2 -> mrcnn_class_bn2
+#         ("activation_34/Relu", "mrcnn_class_conv2/convolution"), # active 68 -> mrcnn_class_conv2
+#         ("mrcnn_class_bn1/batchnorm/add_1","activation_34/Relu"), # mrcnn_class_bn1 -> active 68
+#         ("mrcnn_class_conv1/BiasAdd", "mrcnn_class_bn1/batchnorm/mul_1"), # mrcnn_class_conv1 -> mrcnn_class_bn1
+#         ("roi_align_classifier", "mrcnn_class_conv1/convolution"), # roi_align_classifier -> mrcnn_class_conv1
+#         ]
+
+# RESNET18 Version
 timedistributed_connect_pairs = [
         ("mrcnn_mask_deconv/Relu", "mrcnn_mask/convolution"), # mrcnn_mask_deconv -> mrcnn_mask
-        ("activation_74/Relu", "mrcnn_mask_deconv/conv2d_transpose"), #active74 -> mrcnn_mask_deconv
-        ("mrcnn_mask_bn4/batchnorm/add_1","activation_74/Relu"),  # mrcnn_mask_bn4 -> active74
+        ("activation_24/Relu", "mrcnn_mask_deconv/conv2d_transpose"), #active74 -> mrcnn_mask_deconv
+        ("mrcnn_mask_bn4/batchnorm/add_1","activation_24/Relu"),  # mrcnn_mask_bn4 -> active74
         ("mrcnn_mask_conv4/BiasAdd", "mrcnn_mask_bn4/batchnorm/mul_1"), #mrcnn_mask_conv4 -> mrcnn_mask_bn4
-        ("activation_73/Relu", "mrcnn_mask_conv4/convolution"), #active73 -> mrcnn_mask_conv4
-        ("mrcnn_mask_bn3/batchnorm/add_1","activation_73/Relu"), #mrcnn_mask_bn3 -> active73
+        ("activation_23/Relu", "mrcnn_mask_conv4/convolution"), #active73 -> mrcnn_mask_conv4
+        ("mrcnn_mask_bn3/batchnorm/add_1","activation_23/Relu"), #mrcnn_mask_bn3 -> active73
         ("mrcnn_mask_conv3/BiasAdd", "mrcnn_mask_bn3/batchnorm/mul_1"), #mrcnn_mask_conv3 -> mrcnn_mask_bn3
-        ("activation_72/Relu", "mrcnn_mask_conv3/convolution"), #active72 -> mrcnn_mask_conv3
-        ("mrcnn_mask_bn2/batchnorm/add_1","activation_72/Relu"), #mrcnn_mask_bn2 -> active72
+        ("activation_22/Relu", "mrcnn_mask_conv3/convolution"), #active72 -> mrcnn_mask_conv3
+        ("mrcnn_mask_bn2/batchnorm/add_1","activation_22/Relu"), #mrcnn_mask_bn2 -> active72
         ("mrcnn_mask_conv2/BiasAdd", "mrcnn_mask_bn2/batchnorm/mul_1"), #mrcnn_mask_conv2 -> mrcnn_mask_bn2
-        ("activation_71/Relu", "mrcnn_mask_conv2/convolution"), #active71 -> mrcnn_mask_conv2
-        ("mrcnn_mask_bn1/batchnorm/add_1","activation_71/Relu"), #mrcnn_mask_bn1 -> active71
+        ("activation_21/Relu", "mrcnn_mask_conv2/convolution"), #active71 -> mrcnn_mask_conv2
+        ("mrcnn_mask_bn1/batchnorm/add_1","activation_21/Relu"), #mrcnn_mask_bn1 -> active71
         ("mrcnn_mask_conv1/BiasAdd", "mrcnn_mask_bn1/batchnorm/mul_1"), #mrcnn_mask_conv1 -> mrcnn_mask_bn1
         ("roi_align_mask_trt", "mrcnn_mask_conv1/convolution"), #roi_align_mask -> mrcnn_mask_conv1
 
-
-        ("mrcnn_class_bn2/batchnorm/add_1","activation_69/Relu"), # mrcnn_class_bn2 -> active 69
+        ("mrcnn_class_bn2/batchnorm/add_1","activation_19/Relu"), # mrcnn_class_bn2 -> active 69
         ("mrcnn_class_conv2/BiasAdd", "mrcnn_class_bn2/batchnorm/mul_1"), # mrcnn_class_conv2 -> mrcnn_class_bn2
-        ("activation_68/Relu", "mrcnn_class_conv2/convolution"), # active 68 -> mrcnn_class_conv2
-        ("mrcnn_class_bn1/batchnorm/add_1","activation_68/Relu"), # mrcnn_class_bn1 -> active 68
+        ("activation_18/Relu", "mrcnn_class_conv2/convolution"), # active 68 -> mrcnn_class_conv2
+        ("mrcnn_class_bn1/batchnorm/add_1","activation_18/Relu"), # mrcnn_class_bn1 -> active 68
         ("mrcnn_class_conv1/BiasAdd", "mrcnn_class_bn1/batchnorm/mul_1"), # mrcnn_class_conv1 -> mrcnn_class_bn1
         ("roi_align_classifier", "mrcnn_class_conv1/convolution"), # roi_align_classifier -> mrcnn_class_conv1
         ]
@@ -99,9 +151,28 @@ dense_compatible_patch =["pool_squeeze/Squeeze", "pool_squeeze/Squeeze_1", #No n
         "mrcnn_bbox/Reshape/shape/2", "mrcnn_bbox/Reshape/shape/3",
         "mrcnn_bbox/Reshape/shape", "mrcnn_bbox/Reshape"]
 
+# RESNET101 version
+# dense_compatible_connect_pairs = [
+#         ("activation_69/Relu","mrcnn_bbox_fc/MatMul"), #activation_69 -> mrcnn_bbox_fc
+#         ("activation_69/Relu", "mrcnn_class_logits/MatMul"), #activation_69 -> mrcnn_class_logits
+#         ("mrcnn_class_logits/BiasAdd", "mrcnn_class/Softmax"), #mrcnn_class_logits -> mrcnn_class
+#         ("mrcnn_class/Softmax", "mrcnn_detection"), #mrcnn_class -> mrcnn_detection
+#         ("mrcnn_bbox_fc/BiasAdd", "mrcnn_detection"), #mrcnn_bbox_fc -> mrcnn_detection
+#         ]
+
+#RESNET50 version
+# dense_compatible_connect_pairs = [
+#         ("activation_35/Relu","mrcnn_bbox_fc/MatMul"), #activation_69 -> mrcnn_bbox_fc
+#         ("activation_35/Relu", "mrcnn_class_logits/MatMul"), #activation_69 -> mrcnn_class_logits
+#         ("mrcnn_class_logits/BiasAdd", "mrcnn_class/Softmax"), #mrcnn_class_logits -> mrcnn_class
+#         ("mrcnn_class/Softmax", "mrcnn_detection"), #mrcnn_class -> mrcnn_detection
+#         ("mrcnn_bbox_fc/BiasAdd", "mrcnn_detection"), #mrcnn_bbox_fc -> mrcnn_detection
+#         ]
+
+#RESNET18 version
 dense_compatible_connect_pairs = [
-        ("activation_69/Relu","mrcnn_bbox_fc/MatMul"), #activation_69 -> mrcnn_bbox_fc
-        ("activation_69/Relu", "mrcnn_class_logits/MatMul"), #activation_69 -> mrcnn_class_logits
+        ("activation_19/Relu","mrcnn_bbox_fc/MatMul"), #activation_69 -> mrcnn_bbox_fc
+        ("activation_19/Relu", "mrcnn_class_logits/MatMul"), #activation_69 -> mrcnn_class_logits
         ("mrcnn_class_logits/BiasAdd", "mrcnn_class/Softmax"), #mrcnn_class_logits -> mrcnn_class
         ("mrcnn_class/Softmax", "mrcnn_detection"), #mrcnn_class -> mrcnn_detection
         ("mrcnn_bbox_fc/BiasAdd", "mrcnn_detection"), #mrcnn_bbox_fc -> mrcnn_detection
